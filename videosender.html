@@ -10,7 +10,7 @@
   <button onclick=stream()>Send</button>
 </body>
 <script>
-  var w = 320, h = 240;
+  var w = 1920, h = 1080;
 	var url = "ws://localhost:3000"
 	var ws = new WebSocket(url);
 	ws.onopen = function(){
@@ -45,11 +45,12 @@
   processImage();
 
   function stream(){
-    setInterval(sendImage, 600);
+    setInterval(sendImage,600);
+    console.log("sendmsg");
   }
 
   function sendImage(){
-    var rawData = canvas.toDataURL("image/jpeg", 0.5);
+    var rawData = canvas.toDataURL("image/jpeg", 1);
     ws.send(rawData);
   }
 </script>
